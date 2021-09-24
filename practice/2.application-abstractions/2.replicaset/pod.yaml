@@ -1,0 +1,13 @@
+---
+# file: practice/2.application-abstractions/2.replicaset/pod.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  containers:
+  - image: nginx:1.12
+    name: nginx
+    ports:
+    - containerPort: 80
+...

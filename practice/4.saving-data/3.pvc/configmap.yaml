@@ -1,0 +1,26 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fileshare
+data:
+  default.conf: |
+    server {
+      listen       80 default_server;
+      server_name  _;
+
+      default_type text/plain;
+
+      location / {
+        return 200 '$hostname\n';
+      }
+
+      location /files {
+        alias /data;
+        autoindex on;
+        client_body_temp_path /tmp;
+        dav_methods PUT DELETE MKCOL COPY MOVE;
+        create_full_put_path on;
+        dav_access user:rw group:rw all:r;
+      }
+    }

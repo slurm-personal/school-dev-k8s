@@ -1,0 +1,120 @@
+apiVersion:  apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: {{ .Chart.Name }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    component: app
+  name: {{ .Release.Name }}
+spec:
+  progressDeadlineSeconds: 180
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Chart.Name }}
+      release: {{ .Release.Name }}
+      component: app
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  revisionHistoryLimit: 5
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: {{ .Chart.Name }}
+        release: {{ .Release.Name }}
+        component: app
+    spec:
+      containers:
+      - name: nginx
+        command: ["/usr/sbin/nginx"]
+        args: ["-g", "daemon off;"]
+        image: {{ .Values.image }}:{{ .Values.imageTag }}
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+          - mountPath: /var/run
+            name: socket
+        ports:
+        - containerPort: {{ .Values.service.port }}
+          name: http
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 30
+          httpGet:
+            path: /
+            port: {{ .Values.service.port }}
+            scheme: HTTP
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        livenessProbe:
+          initialDelaySeconds: 90
+          failureThreshold: 3
+          httpGet:
+            path: /
+            port: {{ .Values.service.port }}
+            scheme: HTTP
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 2
+        resources:
+          limits:
+            cpu: 100m
+            memory: 256Mi
+          requests:
+            cpu: 100m
+            memory: 256Mi
+      - env:
+        {{- range $key, $val := .Values.env }}
+        - name: {{ $key | quote }}
+          value: {{ $val | quote }}
+        {{- end }}
+        {{- range $key, $val := .Values.envSecret }}
+        - name: {{ $key | quote }}
+          valueFrom:
+            secretKeyRef:
+              key: {{ $key | lower | replace "_" "-" }}
+              name: {{ $val }}
+        {{- end }}
+        image: {{ .Values.image }}:{{ .Values.imageTag}}
+        imagePullPolicy: IfNotPresent
+        name: app
+        command: ["/bin/sh"]
+        args: ["-c","exec bundle exec puma -b unix:///var/run/puma.sock -e $RAILS_ENV config.ru"]
+        volumeMounts:
+          - mountPath: /var/run
+            name: socket
+        readinessProbe:
+          failureThreshold: 30
+          httpGet:
+            path: /
+            port: {{ .Values.service.port }}
+            scheme: HTTP
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        livenessProbe:
+          initialDelaySeconds: 90
+          failureThreshold: 3
+          httpGet:
+            path: /
+            port: {{ .Values.service.port }}
+            scheme: HTTP
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 2
+        resources:
+{{ toYaml .Values.resources | indent 12 }}
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 20
+      imagePullSecrets:
+        - name: {{ .Values.imagePullSecret }}
+      volumes:
+        - name: socket
+          emptyDir: {}

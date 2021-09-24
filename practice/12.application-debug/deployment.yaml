@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+        - name: test
+          image: centos:7
+          command:
+            - bash
+            - -c
+            - "for i in $(seq 1 100); do echo 'working OK'; sleep 0.1; done; echo 'broken'; exit 1"
+          terminationMessagePolicy: FallbackToLogsOnError
