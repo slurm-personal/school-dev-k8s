@@ -3,7 +3,7 @@
 1) Применяем манифест
 
 ```bash
-kubectl apply -f ~/slurm/practice/4.saving-data/2.emptydir/
+kubectl apply -f ~/slurm/practice/5.saving-data/2.emptydir/
 ```
 
 2) Заходим в под и создаем файлик на томе empty dir
