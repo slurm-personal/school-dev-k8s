@@ -5,7 +5,7 @@
 Для этого выполним команду:
 
 ```bash
-kubectl apply -f ~/slurm/practice/3.saving-configurations/4.downward/
+kubectl apply -f ~/slurm/practice/4.saving-configurations/4.downward/
 ```
 
 2) Смотрим переменные окружения в контейнере

@@ -41,8 +41,8 @@ spec:
               cpu: 1000m
               memory: 1024Mi
             requests:
-              cpu: 250m
-              memory: 512Mi
+              cpu: 10m
+              memory: 256Mi
           livenessProbe:
             exec:
               command: ["rabbitmqctl", "status"]
@@ -89,4 +89,4 @@ spec:
         accessModes: ["ReadWriteOnce"]
         resources:
           requests:
-            storage: 1Gi
+            storage: 20Mi

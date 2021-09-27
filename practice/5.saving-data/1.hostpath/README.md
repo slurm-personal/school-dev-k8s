@@ -3,7 +3,7 @@
 1) Применяем манифест
 
 ```bash
-kubectl apply -f ~/slurm/practice/4.saving-data/1.hostpath/
+kubectl apply -f ~/slurm/practice/5.saving-data/1.hostpath/
 
 kubectl get pod
 kubectl get all
