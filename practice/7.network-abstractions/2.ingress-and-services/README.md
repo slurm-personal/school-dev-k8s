@@ -34,31 +34,16 @@ curl my-service
 exit
 ```
 
-5) Создаем Service типа Nodeport:
+## Важно! На Service'ы типа NodePort и LoadBalancer просто смотрим. Их в кластере не создаем!
+
+5) Смотрим как выглядят Service'ы типа Nodeport и LoadBalancer:
 
 ```bash
-kubectl apply -f nodeport.yaml
+cat nodeport.yaml
+cat loadbalancer.yaml
 ```
 
-6) Проверяем что все ОК. Смотрим наши Service'ы, находим NodePort. Фиксируем, какой порт нам открылся и проверяем работу Service'а:
-
-```bash
-kubectl get svc
-
-curl node-1.slurm.io:<свой номер порта>
-
-curl master-1.slurm.io:<свой номер порта>
-```
-
-7) Создаем Service LoadBalancer:
-
-```bash
-kubectl create -f loadbalancer.yaml
-
-kubectl get svc
-```
-
-8) Подчищаем за собой:
+6) Подчищаем за собой:
 
 ```bash
 kubectl delete svc my-service-lb my-service-np
@@ -66,22 +51,19 @@ kubectl delete svc my-service-lb my-service-np
 
 ## Разбираемся с Ingress'ами
 
-1) Создадим Ingress без указания хоста:
+1) Создадим Ingress, предварительно поправив плейсхолдер:
 
 ```bash
-kubectl apply -f nginx-ingress.yaml
+vim host-ingress.yaml
+
+kubectl apply -f host-ingress.yaml
 kubectl get ing
 ```
 
-2) Попробуем покурлить разные домены:
+2) Попробуем покурлить:
 
 ```bash
 curl my.s<свой номер логина>.k8s.slurm.io
 
 curl notmy.s<свой номер логина>.k8s.slurm.io 
 ```
-
-**САМОСТОЯТЕЛЬНАЯ РАБОТА:**
-- Подправить Ingress таким образом, чтобы он работал только на домене `my.s<свой номер логина>.k8s.slurm.io`
-
-Правильный ответ лежит в `right_answers/`
