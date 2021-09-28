@@ -4,7 +4,7 @@ metadata:
   name: my-ingress-nginx
 spec:
   rules:
-  - host: my.s<свой номер логина>.k8s.slurm.io
+  - host: my.s<свой номер логина>.mcs.slurm.io
     http:
       paths:
       - pathType: Prefix
