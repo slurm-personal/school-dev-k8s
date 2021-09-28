@@ -5,7 +5,7 @@
 1) Создаем job
 
 ```bash
-kubectl apply -f job.yaml
+kubectl apply -f ~/school-dev-k8s/practice/10.oneshot-tasks/1.job/job.yaml
 ```
 
 2) Проверяем
@@ -76,7 +76,7 @@ args:
 7) Создаем Job:
 
 ```bash
-kubectl apply -f job.yaml
+kubectl apply -f ~/school-dev-k8s/practice/10.oneshot-tasks/1.job/job.yaml
 ```
 
 8) Проверяем
@@ -150,7 +150,7 @@ args:
 13) Создаем Job
 
 ```bash
-kubectl apply -f job.yaml
+kubectl apply -f ~/school-dev-k8s/practice/10.oneshot-tasks/1.job/job.yaml
 ```
 
 14) Проверяем

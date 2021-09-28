@@ -15,7 +15,7 @@ kubectl get secret test -o yaml
 Для этого выполним команду:
 
 ```bash
-kubectl apply -f ~/slurm/practice/4.saving-configurations/2.secret/deployment-with-secret.yaml
+kubectl apply -f ~/school-dev-k8s/practice/4.saving-configurations/2.secret/deployment-with-secret.yaml
 ```
 
 3) Проверяем результат
@@ -37,7 +37,7 @@ Environment:
 4) Применяем манифест с секретом
 
 ```bash
-kubectl apply -f ~/slurm/practice/4.saving-configurations/2.secret/secret.yaml
+kubectl apply -f ~/school-dev-k8s/practice/4.saving-configurations/2.secret/secret.yaml
 ```
 
 5) Проверяем что в секрете
@@ -50,9 +50,9 @@ kubectl get secret test -o yaml
 
 ```bash
 # изменяем ключ test на test1
-vim secret.yaml
+vim  ~/school-dev-k8s/practice/4.saving-configurations/2.secret/secret.yaml
 
-kubectl apply -f secret.yaml
+kubectl apply -f kubectl apply -f ~/school-dev-k8s/practice/4.saving-configurations/2.secret/secret.yaml
 ```
 
 7) Проверяем что в секрете

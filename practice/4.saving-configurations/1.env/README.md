@@ -5,7 +5,7 @@
 Для этого выполним команду:
 
 ```bash
-kubectl apply -f ~/slurm/practice/4.saving-configurations/1.env/deployment-with-env.yaml
+kubectl apply -f ~/school-dev-k8s/practice/4.saving-configurations/1.env/deployment-with-env.yaml
 ```
 
 2) Проверяем результат
@@ -26,8 +26,8 @@ Environment:
 3) Создаем configmap
 
 ```bash
-kubectl apply -f ~/slurm/practice/4.saving-configurations/1.env/configmap.yaml
-kubectl apply -f ~/slurm/practice/4.saving-configurations/1.env/deployment-with-env-cm.yaml
+kubectl apply -f ~/school-dev-k8s/practice/4.saving-configurations/1.env/configmap.yaml
+kubectl apply -f ~/school-dev-k8s/practice/4.saving-configurations/1.env/deployment-with-env-cm.yaml
 ```
 
 4) Проверяем результат

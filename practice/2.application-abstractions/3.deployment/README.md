@@ -5,7 +5,7 @@
 Для этого выполним команду:
 
 ```bash
-kubectl apply -f ~/slurm/practice/2.application-abstractions/3.deployment/
+kubectl apply -f ~/school-dev-k8s/practice/2.application-abstractions/3.deployment/
 ```
 
 Проверяем список pods, для этого выполним команду:
