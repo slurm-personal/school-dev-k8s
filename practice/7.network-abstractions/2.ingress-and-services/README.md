@@ -63,7 +63,7 @@ kubectl get ing
 2) Попробуем покурлить:
 
 ```bash
-curl my.s<свой номер логина>.k8s.slurm.io
+curl my.s<свой номер логина>.mcs.slurm.io
 
-curl notmy.s<свой номер логина>.k8s.slurm.io 
+curl notmy.s<свой номер логина>.mcs.slurm.io 
 ```

@@ -17,7 +17,7 @@ helm show values southbridge/kube-ops-view > values.yaml
 ingress:
   enabled: true
 ...
-hostname: kube-ops.s<свой номер логина>.k8s.slurm.io
+hostname: kube-ops.s<свой номер логина>.mcs.slurm.io
 ...
 ```
 
@@ -27,7 +27,7 @@ hostname: kube-ops.s<свой номер логина>.k8s.slurm.io
 helm install ops-view southbridge/kube-ops-view -f values.yaml
 ```
 
-4) Переходим в браузер в Инкогнито режим и заходим на `http://kube-ops.s<свой номер логина>.k8s.slurm.io/`
+4) Переходим в браузер в Инкогнито режим и заходим на `http://kube-ops.s<свой номер логина>.mcs.slurm.io/`
 
 5) Удаляем чарт:
 
