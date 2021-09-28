@@ -4,7 +4,7 @@
 
 В среде Windows, рекомендуем выполнять команды в [Git Bash](https://git-scm.com/downloads) 
 
-[Описание и решение](https://gitlab.slurm.io/semrush/devk8s/-/blob/a.egorov/practice/12.local-development/problems_window.md) возможных проблем на платформе Windows.  
+[Описание и решение](https://github.com/Slurmio/school-dev-k8s/blob/main/practice/9.local-development/problems_window.md) возможных проблем на платформе Windows.  
 
 ## 1. Запускаем minikube
 
