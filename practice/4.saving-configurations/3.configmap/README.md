@@ -5,7 +5,7 @@
 Для этого выполним команду:
 
 ```bash
-kubectl apply -f ~/slurm/practice/4.saving-configurations/3.configmap/
+kubectl apply -f ~/school-dev-k8s/practice/4.saving-configurations/3.configmap/
 ```
 
 2) Проверяем

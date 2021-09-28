@@ -3,7 +3,7 @@
 1) Применяем манифест pvc.yml
 
 ```bash
-kubectl apply -f ~/slurm/practice/5.saving-data/3.pvc/pvc.yaml
+kubectl apply -f ~/school-dev-k8s/practice/5.saving-data/3.pvc/pvc.yaml
 
 kubectl get pvc
 kubectl get pv
@@ -12,7 +12,7 @@ kubectl get pv
 2) Запустим приложение, использующее PV
 
 ```bash
-kubectl apply -f ~/slurm/practice/5.saving-data/3.pvc/
+kubectl apply -f ~/school-dev-k8s/practice/5.saving-data/3.pvc/
 ```
 
 3) Посмотрим describe и смонтированные тома в контейнере
@@ -25,5 +25,5 @@ kubectl exec -it fileshare-<TAB> -- df -h
 4) Очищаем
 
 ```bash
-kubectl delete -f ~/slurm/practice/5.saving-data/3.pvc/
+kubectl delete -f ~/school-dev-k8s/practice/5.saving-data/3.pvc/
 ```

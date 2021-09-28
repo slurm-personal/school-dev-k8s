@@ -3,7 +3,7 @@
 ## 1. Создаем deployment с ресурсами
 
 ```bash
-kubectl apply -f ~/slurm/practice/2.application-abstractions/4.resources/
+kubectl apply -f ~/school-dev-k8s/practice/2.application-abstractions/4.resources/
 ```
 
 Смотрим что получилось

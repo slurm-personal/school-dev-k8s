@@ -3,7 +3,7 @@
 Создаем deployment с ресурсами и пробами
 
 ```bash
-kubectl apply -f deployment-with-stuff.yaml
+kubectl apply -f ~/school-dev-k8s/practice/7.network-abstractions/1.probes/deployment-with-stuff.yaml
 ```
 
 Смотрим что получилось
@@ -23,8 +23,8 @@ my-deployment-69695544f6-xcpq9   1/1     Running   0          20s
 Поменяем специально Readiness Probe на заведомо неверную в манифесте и применим его снова
 
 ```bash
-vim deployment-with-stuff.yaml
-kubectl apply -f deployment-with-stuff.yaml
+vim ~/school-dev-k8s/practice/7.network-abstractions/1.probes/deployment-with-stuff.yaml
+kubectl apply -f ~/school-dev-k8s/practice/7.network-abstractions/1.probes/deployment-with-stuff.yaml
 ```
 
 Смотрим что получилось
