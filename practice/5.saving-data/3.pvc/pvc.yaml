@@ -4,7 +4,7 @@ apiVersion: v1
 metadata:
   name: fileshare
 spec:
-  storageClassName: csi-ceph-hdd-dp1
+  storageClassName: csi-ceph-hdd-ms1
   accessModes:
   - ReadWriteMany
   resources:
