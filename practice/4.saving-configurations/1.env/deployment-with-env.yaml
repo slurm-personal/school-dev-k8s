@@ -19,7 +19,7 @@ spec:
         app: my-app
     spec:
       containers:
-      - image: nginx:1.12
+      - image: quay.io/testing-farm/nginx:1.12
         name: nginx
         env:
         - name: TEST
