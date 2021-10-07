@@ -1,1 +1,1 @@
-# school-dev-k8s
+# school-dev-k8
