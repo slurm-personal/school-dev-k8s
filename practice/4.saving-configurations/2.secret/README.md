@@ -51,8 +51,7 @@ kubectl get secret test -o yaml
 ```bash
 # изменяем ключ test на test1
 vim  ~/school-dev-k8s/practice/4.saving-configurations/2.secret/secret.yaml
-
-kubectl apply -f kubectl apply -f ~/school-dev-k8s/practice/4.saving-configurations/2.secret/secret.yaml
+kubectl apply -f ~/school-dev-k8s/practice/4.saving-configurations/2.secret/secret.yaml
 ```
 
 7) Проверяем что в секрете
