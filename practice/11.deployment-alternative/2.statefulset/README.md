@@ -61,7 +61,7 @@ data-rabbitmq-1   Bound    pvc-01c40ac5-496f-11e9-96e5-4201ac101193   2Gi       
 5) Запускаем под для тестов
 
 ```bash
-kubectl run -t -i --rm --image centosadmin/utils test bash
+kubectl run -t -i --rm --image centosadmin/utils:0.3 test bash
 ```
 
 6) Дальше уже из этого пода выполняем:

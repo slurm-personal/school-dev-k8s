@@ -11,7 +11,7 @@ kubectl apply -f app
 2) Запустим тестовое приложение, с которого мы будем обращаться к основному:
 
 ```bash
-kubectl run test --image=amouat/network-utils -it bash
+kubectl run test --image=centosadmin/utils:0.3 -it bash
 
 exit
 ```
