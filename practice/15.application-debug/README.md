@@ -2,10 +2,11 @@
 
 ## 1. Тестим termination log
 
-Запускаем в кластере подготовленный деплоймент. Для этого выполним команду:
+Запускаем в кластере подготовленный деплоймент. Для этого выполним команды:
 
 ```bash
-kubectl apply -f ~/slurm/practice/12.application-debug/deployment.yaml
+cd ~/slurm/practice/15.application-debug
+kubectl apply -f deployment.yaml
 ```
 
 Проверим результат, для чего выполним команду:
@@ -25,7 +26,7 @@ my-deployment-54cc978cf6-5d67r   1/1     Running   0          3s
 и можно будет проверить как это выглядит в дескрайбе:
 
 ```bash
-kubectl describe po my-deployment-54cc978cf6-5d67r
+kubectl describe po my-deployment-<TAB>
 ```
 
 ```bash
