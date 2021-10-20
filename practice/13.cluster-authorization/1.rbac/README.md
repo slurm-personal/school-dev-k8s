@@ -5,14 +5,13 @@
 Исправляем название namespace в rolebinding
 
 ```bash
-cd ~/slurm/practice/9.cluster-authorization/1.rbac
+cd ~/slurm/practice/13.cluster-authorization/1.rbac
 vim rolebinding.yaml
 ```
 
 2) Создаем объекты
 
 ```bash
-cd ~/slurm/practice/9.cluster-authorization/1.rbac
 kubectl apply -f .
 
 ```
