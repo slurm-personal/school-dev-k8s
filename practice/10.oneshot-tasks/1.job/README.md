@@ -195,3 +195,7 @@ kubectl describe job hello
 ```bash
 kubectl delete job hello
 ```
+
+### Есть еще два неописанных в манифесте Job'а параметра
+
+Это `.spec.completions` и `.spec.parallelism` . Они отвечают за желаемое количество успешно выполненных Pod'ов в рамках Job'а и за параллельный запуск Pod'ов в рамках Job'а соответственно. 
