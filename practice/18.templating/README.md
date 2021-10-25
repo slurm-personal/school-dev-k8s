@@ -40,14 +40,14 @@ helm delete ops-view
 ```bash
 helm pull southbridge/kube-ops-view
 
-tar -zxvf kube-ops-view-X.Y.Z.tgz
+tar -zxvf kube-ops-view-<TAB>
 
 cd kube-ops-view/
 ```
 
 ### Создадим свой чарт
 
-1) Возьмем за основу нашего чарта готовый Depolyment. Создадим папку будущего чарта и создадим внутри необходимые файлы и папки:
+1) Возьмем за основу нашего чарта готовый Deployment. Создадим папку будущего чарта и создадим внутри необходимые файлы и папки:
 
 ```bash
 cd ~
@@ -58,7 +58,7 @@ cd myapp
 touch Chart.yaml values.yaml
 mkdir templates
 
-cp ~/slurm/practice/13.templating/simple-deployment.yaml ~/myapp/templates/
+cp ~/school-dev-k8s/practice/18.templating/simple-deployment.yaml ~/myapp/templates/
 ```
 
 2) Добавим в файл `Chart.yaml` минимально необходимые поля:
@@ -307,10 +307,10 @@ helm template . --name-template foobar
 
 ### Helm Tests
 
-1) Переходим в каталог `~/slurm/practice/13.templating/wordpress`, осматриваем чарт. Смотрим папку `tests` и манифест там
+1) Переходим в каталог `~/school-dev-k8s/practice/18.templating/wordpress`, осматриваем чарт. Смотрим папку `tests` и манифест там
 
 ```bash
-cd ~/slurm/practice/13.templating/wordpress
+cd ~/school-dev-k8s/practice/18.templating/wordpress
 ls
 cd templates/tests/
 ls
@@ -319,7 +319,7 @@ cat test-mariadb-connection.yaml
 2) Устанавливаем чарт Wordpress в свой кластер и запускаем тесты:
 
 ```bash
-helm install wordpress ~/slurm/practice/13.templating/wordpress/
+helm install wordpress ~/school-dev-k8s/practice/18.templating/wordpress
 helm test wordpress
 ```
 
@@ -335,13 +335,13 @@ kubectl get po
 ```bash
 kubectl delete po <имя_пода>
 
-cd ~/slurm/practice/13.templating
+cd ~/school-dev-k8s/practice/18.templating/
 vim wordpress/templates/tests/test-mariadb-connection.yaml
 ```
 ```yaml
 ...
 annotations: 
-  "helm.sh/hook-delete-policy": hook-succeeded`  <-- Добавляем аннотацию
+  "helm.sh/hook-delete-policy": hook-succeeded  <-- Добавляем аннотацию
   "helm.sh/hook": test-succeded
 ...
 ```
@@ -349,7 +349,7 @@ annotations:
 5) Снова ставим чарт и делаем тест:
 
 ```bash
-helm install wordpress ~/slurm/practice/13.templating/wordpress/
+helm install wordpress ~/school-dev-k8s/practice/18.templating/wordpress/
 helm test wordpress
 ```
 
