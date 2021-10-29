@@ -1,8 +1,14 @@
 # StatefulSet
 
+1) Переходим в директорию с практикой.
+
+```bash
+cd ~/school-dev-k8s/practice/10.deployment-alternative/2.statefulset
+```
+
 ### Создаем стэйтфулсет
 
-1) Применяем каталог с манифестами
+2) Применяем каталог с манифестами
 
 ```bash
 kubectl apply -f rabbitmq-statefulset
