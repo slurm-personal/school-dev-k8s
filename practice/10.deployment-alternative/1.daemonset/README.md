@@ -3,7 +3,7 @@
 1) Переходим в директорию с практикой.
 
 ```bash
-cd ~/slurm/practice/4.advanced-abstractions/1.daemonset
+cd ~/school-dev-k8s/practice/10.deployment-alternative/1.daemonset
 ```
 
 2) Создаем демонсет
