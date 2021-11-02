@@ -5,7 +5,7 @@
 Для этого выполним команду:
 
 ```bash
-kubectl apply -f ~/school-dev-k8s/practice/2.application-abstractions/2.replicaset/replicaset.yaml
+kubectl apply -f ~/school-dev-k8s/practice/3.application-abstractions/2.replicaset/replicaset.yaml
 ```
 
 Проверим результат, для этого выполним команду:
@@ -76,7 +76,7 @@ my-replicaset-z7rwm   0/1       Terminating         0          4m
 Открываем файл `2.replicaset/pod.yaml`
 
 ```bash
-vim ~/school-dev-k8s/practice/2.application-abstractions/2.replicaset/pod.yaml
+vim ~/school-dev-k8s/practice/3.application-abstractions/2.replicaset/pod.yaml
 ```
 
 И в него после metadata: на следующей строке добавляем:
@@ -104,7 +104,7 @@ spec:
 Создаем дополнительный Pod, для этого выполним команду:
 
 ```bash
-kubectl apply -f ~/school-dev-k8s/practice/2.application-abstractions/2.replicaset/pod.yaml
+kubectl apply -f ~/school-dev-k8s/practice/3.application-abstractions/2.replicaset/pod.yaml
 ```
 
 Проверяем результат, для этого выполним команду:

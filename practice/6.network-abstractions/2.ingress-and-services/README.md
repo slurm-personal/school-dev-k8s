@@ -3,7 +3,7 @@
 1) Деплоим "основное" приложение
 
 ```bash
-cd ~/school-dev-k8s/practice/7.network-abstractions/2.ingress-and-services/
+cd ~/school-dev-k8s/practice/6.network-abstractions/2.ingress-and-services/
 
 kubectl apply -f app
 ```

@@ -4,7 +4,7 @@
 
 В среде Windows, рекомендуем выполнять команды в [Git Bash](https://git-scm.com/downloads) 
 
-[Описание и решение](https://github.com/Slurmio/school-dev-k8s/blob/main/practice/9.local-development/problems_window.md) возможных проблем на платформе Windows.  
+[Описание и решение](https://github.com/Slurmio/school-dev-k8s/blob/main/practice/8.local-development/problems_window.md) возможных проблем на платформе Windows.  
 
 ## 1. Запускаем minikube
 
@@ -42,7 +42,7 @@ eval $(minikube docker-env)
 
 Дальше билдим образ
 
-> ВАЖНО!!! нужно находиться в директории `~/school-dev-k8s/practice/9.local-development/app/`
+> ВАЖНО!!! нужно находиться в директории `~/school-dev-k8s/practice/8.local-development/app/`
 
 ```bash
 docker build . -t myapp:dev
@@ -51,7 +51,7 @@ docker build . -t myapp:dev
 После этого В ОТДЕЛЬНОЙ КОНСОЛИ запускаем команду для монтирования
 локальной директории в minikube.
 
-> ВАЖНО!!! нужно находиться в директории `~/school-dev-k8s/practice/9.local-development/app/`
+> ВАЖНО!!! нужно находиться в директории `~/school-dev-k8s/practice/8.local-development/app/`
 
 ```bash
 minikube mount .:/app

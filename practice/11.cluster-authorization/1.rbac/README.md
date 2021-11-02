@@ -5,7 +5,7 @@
 Исправляем название namespace в rolebinding
 
 ```bash
-cd ~/slurm/practice/13.cluster-authorization/1.rbac
+cd ~/slurm/practice/11.cluster-authorization/1.rbac
 vim rolebinding.yaml
 ```
 

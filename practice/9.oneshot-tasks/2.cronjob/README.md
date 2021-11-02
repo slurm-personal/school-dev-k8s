@@ -3,7 +3,7 @@
 1) Создаем CronJob:
 
 ```bash
-kubectl apply -f ~/school-dev-k8s/practice/10.oneshot-tasks/2.cronjob/cronjob.yaml
+kubectl apply -f ~/school-dev-k8s/practice/9.oneshot-tasks/2.cronjob/cronjob.yaml
 ```
 
 2) Проверяем
@@ -54,5 +54,5 @@ kubectl get job,pod
 6) Удаляем CronJob
 
 ```bash
-kubectl delete -f ~/school-dev-k8s/practice/10.oneshot-tasks/2.cronjob/cronjob.yaml
+kubectl delete -f ~/school-dev-k8s/practice/9.oneshot-tasks/2.cronjob/cronjob.yaml
 ```

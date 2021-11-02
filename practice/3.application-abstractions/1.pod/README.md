@@ -5,7 +5,7 @@
 Для этого выполним команду:
 
 ```bash
-kubectl apply -f ~/school-dev-k8s/practice/2.application-abstractions/1.pod/pod.yaml
+kubectl apply -f ~/school-dev-k8s/practice/3.application-abstractions/1.pod/pod.yaml
 ```
 
 Проверим результат, для чего выполним команду:
@@ -34,7 +34,7 @@ my-pod    1/1       Running   0          59s
 Открываем файл pod.yaml редактором:
 
 ```bash
-vim ~/school-dev-k8s/practice/2.application-abstractions/1.pod/pod.yaml
+vim ~/school-dev-k8s/practice/3.application-abstractions/1.pod/pod.yaml
 ```
 
 Входим в режим редактирования нажатием `i`  и заменяем там строку:
@@ -55,7 +55,7 @@ vim ~/school-dev-k8s/practice/2.application-abstractions/1.pod/pod.yaml
 Применяем изменения, для этого выполним команду:
 
 ```bash
-kubectl apply -f ~/school-dev-k8s/practice/2.application-abstractions/1.pod/pod.yaml
+kubectl apply -f ~/school-dev-k8s/practice/3.application-abstractions/1.pod/pod.yaml
 ```
 
 Проверяем результат, для этого выполним команду:
