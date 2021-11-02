@@ -100,3 +100,9 @@ kubectl logs <pod_name>
 ```
 
 и можем проверить в браузере что изменения действительно применились
+
+## 4. Запускаем dashboard
+
+```bash
+minikube dashboard
+```
