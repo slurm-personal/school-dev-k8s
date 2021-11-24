@@ -1,0 +1,25 @@
+---
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpa-v2-test
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: hpa-v2-test
+  minReplicas: 1
+  maxReplicas: 10
+  metrics:
+  - type: Object
+    object:
+      metric:
+        name: nginx_ingress_controller_requests_per_second
+      describedObject:
+        apiVersion: networking.k8s.io/v1
+        kind: Ingress
+        name: hpa-v2-test
+      target:
+        type: AverageValue
+        averageValue: 10
+...

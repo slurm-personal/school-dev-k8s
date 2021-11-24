@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: hpa-v2-test
+  name: hpa-v2-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hpa-v2-test
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: hpa-v2-test
+    spec:
+      containers:
+      - image: nginx:1.13
+        name: nginx
+        resources: {}
+status: {}
