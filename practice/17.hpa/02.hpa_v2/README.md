@@ -200,10 +200,10 @@ curl -I hpa-v2-test.<External Ingress IP>.nip.io
 Теперь проверим доступность метрики `nginx_ingress_controller_requests_per_second` через kube-api. Для этого выполним команду:
 
 ```bash
-kubectl get --raw /apis/custom.metrics.k8s.io/v1beta1 | grep nginx_ingress_controller_requests_per_second        
+kubectl get --raw /apis/custom.metrics.k8s.io/v1beta1 | grep --color nginx_ingress_controller_requests_per_second        
 ```
 
-В результате выполнения этой команды на экран будет выведено: `nginx_ingress_controller_requests_per_second`.
+В результате выполнения этой команды на экран будет выведен список всех метрик и цветом обозначена наша новая метрика: `nginx_ingress_controller_requests_per_second`. Обратите внимание что метрика будет доступна спустя некоторое время.
 
 **3. Создаем HPA**
 
