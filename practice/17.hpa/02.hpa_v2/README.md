@@ -24,7 +24,7 @@
 Переходим к установке Prometheus. Сначала необходимо установить Helm репозиторий, в котором находится Prometheus Helm chart. Для этого выполним команду:
  
 ```bash
-helm repo add stable https://charts.helm.sh/stable
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 ```
 
 * Устанавливаем Prometheus
@@ -32,7 +32,7 @@ helm repo add stable https://charts.helm.sh/stable
 Для прохождения практики нам потребуется только сам Prometheus и kube-state-metrics экспортер. Все остальные компоненты лучше отключить, сделать это можно через `values.yml` или прямое переопределение переменных через ключ `--set`. В итоге получается следующая команда, которую необходимо выполнить в консоли:
 
 ```bash
-helm upgrade --install prometheus stable/prometheus --namespace monitoring --create-namespace --set alertmanager.enabled=false --set pushgateway.enabled=false --set nodeExporter.enabled=false --set server.persistentVolume.enabled=false
+helm upgrade --install prometheus prometheus-community/prometheus --namespace monitoring --create-namespace --set alertmanager.enabled=false --set pushgateway.enabled=false --set nodeExporter.enabled=false --set server.persistentVolume.enabled=false
 ```
 
 * Ставим Prometheus adapter
@@ -40,7 +40,7 @@ helm upgrade --install prometheus stable/prometheus --namespace monitoring --cre
 Устанавливаем Prometheus adapter, который необходим для доступа к метрикам Prometheus через kube-api (HPA умеет получать метрики только из kube-api). Он также устанавливается с помощью Helm chart. Через ключ `--set` указываем, по какому адресу и порту доступен Prometheus. Так как они находятся в одном namespace, можно указать просто имя сервиса. В итоге получается следующая команда, которую необходимо выполнить в консоли:
 
 ```bash
-helm upgrade --install prometheus-adapter stable/prometheus-adapter --namespace monitoring --set prometheus.url=http://prometheus-server --set prometheus.port=80
+helm upgrade --install prometheus-adapter prometheus-community/prometheus-adapter --namespace monitoring --set prometheus.url=http://prometheus-server --set prometheus.port=80
 ```
 
 * Проверяем, что всё заработало 
@@ -184,7 +184,7 @@ rules:
 Применяем изменения, для этого выполним команду:
 
 ```bash
-helm upgrade --install prometheus stable/prometheus --namespace monitoring -f values.yaml         
+helm upgrade --install prometheus prometheus-community/prometheus --namespace monitoring -f values.yaml         
 ```
 
 После применения изменений в Prometheus появится новая метрика с именем `nginx_ingress_controller_requests_per_second`.
