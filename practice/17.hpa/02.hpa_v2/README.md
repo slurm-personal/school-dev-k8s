@@ -277,6 +277,13 @@ kubectl get --raw /apis/custom.metrics.k8s.io/v1beta1 | grep nginx_ingress_contr
 
 Если метрики недоступны, проверяем наличие и корректность добавления правил в Prometheus. Пункт 3. 
 
+* Перед выполнением пункта 2 на minikube необходимо включить addon ingress
+
+```bash
+minikube addons enable ingress
+```
+
+
 #### Полезные ссылки
 
 1. [k8s doc: HPA](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/#autoscaling-on-multiple-metrics-and-custom-metrics)
