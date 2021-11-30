@@ -98,7 +98,7 @@ kubectl expose deployment hpa-v2-test --port 80 -n default
 
 * Создаем Ingress
 
-Зададим ip адрес, по которому принимает запросы Ingress, для этого в файле `deploy/ingress.yml` необходимо заменить <External Ingress IP> на IP адрес. Для миникуба это будет вывод команды 'minikube ip' И применим данный манифест в кластер Kubernetes, выполнив команду:
+Зададим ip адрес, по которому принимает запросы Ingress, для этого в файле `deploy/ingress.yml` необходимо заменить <External Ingress IP> на IP адрес. Для миникуба это будет вывод команды `minikube ip` И применим данный манифест в кластер Kubernetes, выполнив команду:
 
 ```bash
 kubectl apply -f deploy/ingress.yml -n default
