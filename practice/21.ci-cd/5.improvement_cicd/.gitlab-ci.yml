@@ -1,0 +1,71 @@
+variables:
+  K8S_DEV_API_URL: https://kubernetes.default
+  NAMESPACE: xpaste
+
+default:
+  tags:
+    - slurm-k8s
+
+stages:
+  - linter
+  - build
+  - template
+  - deploy
+
+build:
+  stage: build
+  image:
+    name: gcr.io/kaniko-project/executor:debug-v1.3.0
+    entrypoint: [""]
+  script:
+    - mkdir -p /kaniko/.docker
+    - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
+    - |
+      /kaniko/executor --context $CI_PROJECT_DIR \
+      --cache=true --cache-repo=$CI_REGISTRY/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME \
+      --dockerfile $CI_PROJECT_DIR/Dockerfile \
+      --destination $CI_REGISTRY/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME:$CI_COMMIT_REF_SLUG.$CI_PIPELINE_ID
+
+deploy:dev:
+  stage: deploy
+  image: centosadmin/kubernetes-helm:3.6.3
+  environment:
+    name: development
+  script:
+    - kubectl config set-cluster k8s --insecure-skip-tls-verify=true --server=$K8S_DEV_API_URL
+    - kubectl config set-credentials ci --token=$K8S_DEV_CI_TOKEN
+    - kubectl config set-context ci --cluster=k8s --user=ci
+    - kubectl config use-context ci
+    - helm upgrade --install xpaste .helm
+        --set image=$CI_REGISTRY/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME
+        --set imageTag=$CI_COMMIT_REF_SLUG.$CI_PIPELINE_ID
+        --debug
+        --atomic
+        --timeout 120s
+        --namespace $NAMESPACE-$CI_ENVIRONMENT_SLUG
+  only:
+    - master
+
+helm_lint:
+  stage: linter
+  image: centosadmin/kubernetes-helm:3.6.3
+  environment:
+    name: production
+  script:
+    - helm lint .helm
+        --set image=$CI_REGISTRY/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME
+        --set imageTag=$CI_COMMIT_REF_SLUG.$CI_PIPELINE_ID
+  only:
+    - master
+
+template:
+  stage: template
+  image: centosadmin/kubernetes-helm:3.6.3
+  environment:
+    name: production
+  script:
+    - helm template $CI_PROJECT_PATH_SLUG .helm
+        --set image=$CI_REGISTRY/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME
+        --set imageTag=$CI_COMMIT_REF_SLUG.$CI_PIPELINE_ID
+  only:
+    - master
