@@ -1,7 +1,7 @@
 ## The GitLab Server URL (with protocol) that want to register the runner against
 ## ref: https://docs.gitlab.com/runner/commands/README.html#gitlab-runner-register
 ##
-gitlabUrl: http://gitlab.com/
+gitlabUrl: https://gitlab.com/
 
 ## The Registration Token for adding new Runners to the GitLab Server. This must
 ## be retrieved from your GitLab Instance.
@@ -14,7 +14,7 @@ runners:
     [[runners]]
       [runners.kubernetes]
         image = "alpine:3.14"
-        cpu_request = "1000m"
+        cpu_request = "100m"
         cpu_limit = "1000m"
         memory_limit = "2048Mi"
         memory_request = "1024Mi"
@@ -30,7 +30,7 @@ rbac:
 
   ## Use the following Kubernetes Service Account name if RBAC is disabled in this Helm chart (see rbac.create)
   ##
-  serviceAccountName: s<номер_студента>
+  # serviceAccountName: gitlabrunnersa
 
   ## Use podSecurity Policy
   ## ref: https://kubernetes.io/docs/concepts/policy/pod-security-policy/

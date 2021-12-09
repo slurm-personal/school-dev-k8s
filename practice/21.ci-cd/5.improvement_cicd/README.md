@@ -12,7 +12,7 @@ helm_lint:
     name: production
   script:
     - helm lint .helm
-        --set image=$CI_REGISTRY/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME
+        --set image=$CI_REGISTRY_IMAGE
         --set imageTag=$CI_COMMIT_REF_SLUG.$CI_PIPELINE_ID
   only:
     - master
@@ -26,7 +26,7 @@ template:
     name: production
   script:
     - helm template $CI_PROJECT_PATH_SLUG .helm
-        --set image=$CI_REGISTRY/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME
+        --set image=$CI_REGISTRY_IMAGE
         --set imageTag=$CI_COMMIT_REF_SLUG.$CI_PIPELINE_ID
   only:
     - master

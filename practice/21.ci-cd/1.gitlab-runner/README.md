@@ -15,7 +15,7 @@ helm repo add gitlab https://charts.gitlab.io
 Как вы уже поняли, для установки мы пойдем знакомым путём Helm, выполнив команды:
 
 ```bash
-helm upgrade -i gitlab-runner gitlab/gitlab-runner -f values.yaml
+helm upgrade -i gitlab-runner gitlab/gitlab-runner -f values.yaml -n gitlab-runner --create-namespace
 ```
 
 ## 3. Проверка регистрации раннера
