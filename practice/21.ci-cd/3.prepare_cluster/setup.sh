@@ -62,7 +62,7 @@ else
         metadata:
           name: "$ROLE"
         rules:
-        - apiGroups: ["", "extensions", "apps", "batch", "events", "certmanager.k8s.io", "cert-manager.io", "monitoring.coreos.com"]
+        - apiGroups: ["", "extensions", "apps", "batch", "events", "networking.k8s.io", "certmanager.k8s.io", "cert-manager.io", "monitoring.coreos.com"]
           resources: ["*"]
           verbs: ["*"]
 EOF

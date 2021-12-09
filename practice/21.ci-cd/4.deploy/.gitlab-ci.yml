@@ -20,9 +20,9 @@ build:
     - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
     - |
       /kaniko/executor --context $CI_PROJECT_DIR \
-      --cache=true --cache-repo=$CI_REGISTRY/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME \
+      --cache=true --cache-repo=$CI_REGISTRY_IMAGE \
       --dockerfile $CI_PROJECT_DIR/Dockerfile \
-      --destination $CI_REGISTRY/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME:$CI_COMMIT_REF_SLUG.$CI_PIPELINE_ID
+      --destination ${CI_REGISTRY_IMAGE}:$CI_COMMIT_REF_SLUG.$CI_PIPELINE_ID
 
 deploy:dev:
   stage: deploy
@@ -35,7 +35,7 @@ deploy:dev:
     - kubectl config set-context ci --cluster=k8s --user=ci
     - kubectl config use-context ci
     - helm upgrade --install xpaste .helm
-        --set image=$CI_REGISTRY/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME
+        --set image=$CI_REGISTRY_IMAGE
         --set imageTag=$CI_COMMIT_REF_SLUG.$CI_PIPELINE_ID
         --debug
         --atomic
