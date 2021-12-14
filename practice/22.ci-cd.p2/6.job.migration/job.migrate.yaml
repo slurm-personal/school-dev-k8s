@@ -1,0 +1,56 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: "{{ .Release.Name }}-dbmigrate"
+  annotations:
+    "helm.sh/hook": pre-install,pre-upgrade
+    "helm.sh/hook-weight": "1"
+    "helm.sh/hook-delete-policy": before-hook-creation
+  labels:
+    app: {{ .Chart.Name }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    component: dbmigrate
+spec:
+  activeDeadlineSeconds: 180
+  template:
+    metadata:
+      labels:
+        app: {{ .Chart.Name }}
+        release: {{ .Release.Name }}
+        component: dbmigrate
+    spec:
+      containers:
+      - name: dbmigrate
+        image: {{ .Values.image }}:{{ .Values.imageTag }}
+        imagePullPolicy: IfNotPresent
+        command:
+          - bundle
+        args:
+          - exec
+          - rake
+          - db:migrate
+        env:
+        {{- range $key, $val := .Values.env }}
+        - name: {{ $key | quote }}
+          value: {{ $val | quote }}
+        {{- end }}
+        {{- range $key, $val := .Values.envSecret }}
+        - name: {{ $key | quote }}
+          valueFrom:
+            secretKeyRef:
+              key: {{ $key | lower | replace "_" "-" }}
+              name: {{ $val }}
+        {{- end }}
+        resources:
+          limits:
+            cpu: 500m
+            memory: 512Mi
+          requests:
+            cpu: 50m
+            memory: 128Mi
+      dnsPolicy: ClusterFirst
+      restartPolicy: Never
+      imagePullSecrets:
+        - name: {{ .Values.imagePullSecret }}
