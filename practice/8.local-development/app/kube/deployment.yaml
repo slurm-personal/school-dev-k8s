@@ -16,7 +16,7 @@ spec:
         - name: api
           image: myapp:dev
           env:
-            - name: PYTHONUNBUFFERD
+            - name: PYTHONUNBUFFERED
               value: "1"
             - name: DEBUG
               value: "True"
