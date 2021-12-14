@@ -102,6 +102,7 @@ php-apache   Deployment/php-apache   1%/50%    1         5         1          32
 ```bash
 kubectl run load-generator --image=busybox -- /bin/sh -c "while true; do wget -q -O- http://php-apache; done"
 ```
+?!? Если возникают ошибки "load-generator 0/1 ImagePullBackOff" запрашиваем образ так --image=gcr.io/google-containers/busybox:latest
 
 * Проверяем текущее потребление cpu Pod
 
