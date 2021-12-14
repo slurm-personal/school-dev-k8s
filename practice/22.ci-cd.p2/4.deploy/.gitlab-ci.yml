@@ -84,6 +84,7 @@ deploy:prod:
     - kubectl config set-context ci --cluster=k8s --user=ci
     - kubectl config use-context ci
     - helm upgrade --install xpaste .helm
+        -f .helm/values.prod.yaml
         --set image=$CI_REGISTRY_IMAGE
         --set imageTag=$CI_COMMIT_REF_SLUG.$CI_PIPELINE_ID
         --debug
