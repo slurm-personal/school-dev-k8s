@@ -30,6 +30,7 @@ build:
 deploy:dev:
   stage: deploy
   image: centosadmin/kubernetes-helm:3.6.3
+  resource_group: deploy_dev
   environment:
     name: development
   script:
@@ -74,6 +75,7 @@ template:
 deploy:prod:
   stage: deploy
   image: centosadmin/kubernetes-helm:3.6.3
+  resource_group: deploy_prod
   environment:
     name: production
   script:
