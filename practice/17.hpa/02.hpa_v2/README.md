@@ -19,6 +19,13 @@
 
 **1. Подготовка кластера**
 
+* Устанавливаем helm
+```bash
+wget https://get.helm.sh/helm-v3.0.0-linux-amd64.tar.gz
+tar xzvf helm-v3.0.0-linux-amd64.tar.gz
+sudo mv linux-amd64/helm /usr/local/bin/helm
+```
+
 * Устанавливаем Helm репозиторий
 
 Переходим к установке Prometheus. Сначала необходимо установить Helm репозиторий, в котором находится Prometheus Helm chart. Для этого выполним команду:
