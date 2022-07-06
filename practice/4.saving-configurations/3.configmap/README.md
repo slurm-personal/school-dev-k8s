@@ -1,6 +1,6 @@
 # Configmap
 
-1) Создаем configmap
+## 1. Создаем configmap
 
 Для этого выполним команду:
 
@@ -8,7 +8,7 @@
 kubectl apply -f ~/school-dev-k8s/practice/4.saving-configurations/3.configmap/
 ```
 
-2) Проверяем
+## 2. Проверяем
 
 Проверим, что configmap попал в контейнер, для этого пробросим порт из пода и выполним curl.
 Для этого выполним команду, заменив имя pod на имя вашего pod(``можно воспользоваться автоподстановкой по TAB``).
@@ -25,7 +25,7 @@ curl 127.0.0.1:8080
 my-deployment-5b47d48b58-l4t67
 ```
 
-3) Обновим configmap
+## 3. Обновим configmap
 
 ```bash
 kubectl edit configmap my-configmap
@@ -35,7 +35,7 @@ kubectl edit configmap my-configmap
             return 200 '$hostname\nOK\n';
 ```
 
-4) Проверим вывод пода
+## 4. Проверим вывод пода
 
 ```bash
 curl 127.0.0.1:8080
